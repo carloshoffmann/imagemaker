@@ -1,0 +1,33 @@
+
+<h3>Página {{ page }} de {{ pages }}, Registros: {{ totalRecords }}, Tamaño de Página: {{ pageSize }}<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Género</th>
+            <th>Color de Cabello</th>
+            <th>Color de Piel</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let r of records">
+            <td>{{ r.name }}</td>
+            <td>{{ r.gender }}</td>
+            <td>{{ r.hair_color }}</td>
+            <td>{{ r.skin_color }}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<div class="col">
+    <p style="font-size: 18;">
+        <a style="color: rgb(109, 86, 163); cursor: pointer;" *ngIf="page>1" (click)="getData(page)">Anterior</a>
+        <a style="color: rgb(109, 86, 163); cursor: pointer;" *ngFor="let pn of numbers;" (click)="getData(pn)">
+            {{ pn }}&nbsp;
+        </a>
+        <a style="color: rgb(109, 86, 163); cursor: pointer;" *ngIf="page<pages" (click)="getData(page+1)">Siguiente</a><br />
+    </p>
+</div>
+
